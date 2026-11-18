@@ -41,6 +41,33 @@
         ],
         "createdAt": "2026-11-18T12:25:11.193Z",
         "reason": "Agent review: #f7f4ef is the deliberate Angels paper token from the Figma design, coordinated with the supplied gold logo and aubergine #382731. Shared privacy and recovery pages intentionally use the same brand palette."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "src/page.html"
+        ],
+        "createdAt": "2026-11-18T18:33:44.605Z",
+        "reason": "Agent review: the detail-cta section inherits 64-112px vertical section padding and its nested container creates 24-96px horizontal gutters. The immediately preceding desktop/mobile browser review confirms ample inset; the detector misses the nested container and shared cascade."
+      },
+      {
+        "rule": "kicker-above-heading",
+        "value": "*",
+        "files": [
+          "src/page.html"
+        ],
+        "createdAt": "2026-11-18T18:33:44.788Z",
+        "reason": "Agent review: the short service/location marker identifies what the poetic heading refers to and continues the established Figma-led editorial hierarchy. It provides useful treatment and West Clandon context; body paragraphs remain sentence case."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "src/page.html"
+        ],
+        "createdAt": "2026-11-18T18:33:44.965Z",
+        "reason": "Agent review: #f7f4ef is the existing Angels paper token, deliberately paired with the supplied and approved gold identity and aubergine #382731. Detail pages share that brand palette; this is not an unrequested replacement palette."
       }
     ]
   }

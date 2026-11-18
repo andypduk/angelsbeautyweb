@@ -98,6 +98,8 @@ Future work: an owner-authorised Instagram integration is needed only if automat
 
 Reviewed all 16 findings after publication: three uppercase-label warnings, four padding warnings, six section-label warnings and three palette warnings. No new UI defect was verified, so no further visual change or redeployment was made.
 
+The later shared detail-page template produced three additional findings. Its CTA inherits 64–112 px section padding and 24–96 px container gutters, so the padding warning misreads the shared cascade. The service/location marker and paper/gold/aubergine palette intentionally continue the established design. Three rule exceptions are scoped only to `src/page.html`, with reasons recorded through `impeccable hooks ignore-value`. The confirmation detector returns no findings. No website assets or rendered behaviour changed during this triage.
+
 - Uppercase matches are short masthead/location/section labels; paragraph copy remains sentence case.
 - Panel spacing is provided by 64–112px section padding and nested 24–96px horizontal gutters. The footer’s inherited top border is explicitly removed in the theme. The detector did not resolve those relationships.
 - Section labels and the ivory/aubergine palette are deliberate parts of the established Figma-led brand, including the supplied gold logo.
