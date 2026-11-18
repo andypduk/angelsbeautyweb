@@ -1,0 +1,2 @@
+/* Keep navigation available when JavaScript is disabled. */
+@media (max-width:959px){.site-nav{display:flex}}

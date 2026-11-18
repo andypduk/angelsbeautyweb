@@ -1,0 +1,47 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "all-caps-body",
+        "value": "*",
+        "files": [
+          "src/index.html"
+        ],
+        "createdAt": "2026-11-18T12:25:11.128Z",
+        "reason": "Agent review: the three matches are short masthead/location and section labels, not running body copy. This deliberate editorial hierarchy follows the Figma-led beauty brand; body paragraphs remain sentence case."
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "src/index.html"
+        ],
+        "createdAt": "2026-11-18T12:25:11.150Z",
+        "reason": "Agent review: experience, before-visit and booking panels have 64–112px section padding plus nested container gutters of 24–96px. footer-main has its inherited border explicitly removed by luxury.css. Browser review at 320–1440px confirmed no text against boundaries; detector misses the cascade and nested container spacing."
+      },
+      {
+        "rule": "kicker-above-heading",
+        "value": "*",
+        "files": [
+          "src/index.html",
+          "src/privacy.html"
+        ],
+        "createdAt": "2026-11-18T12:25:11.170Z",
+        "reason": "Agent review: these are intentional short section markers and the privacy brand label within the established Figma-derived editorial design. Preserve the requested luxury direction and incumbent hierarchy during hook triage; paragraphs are not uppercase."
+      },
+      {
+        "rule": "cream-palette",
+        "value": "*",
+        "files": [
+          "src/404.html",
+          "src/index.html",
+          "src/privacy.html"
+        ],
+        "createdAt": "2026-11-18T12:25:11.193Z",
+        "reason": "Agent review: #f7f4ef is the deliberate Angels paper token from the Figma design, coordinated with the supplied gold logo and aubergine #382731. Shared privacy and recovery pages intentionally use the same brand palette."
+      }
+    ]
+  }
+}

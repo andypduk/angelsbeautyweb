@@ -1,0 +1,10 @@
+{
+  "name": "angelsbeautyweb",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build": "python3 scripts/build.py",
+    "preview": "python3 scripts/serve.py",
+    "start": "python3 scripts/serve.py"
+  }
+}

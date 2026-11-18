@@ -1,0 +1,86 @@
+/* Editorial art direction; shared semantics and responsive menu live in styles.css. */
+:root{--section-space:112px;--gold:#806330}
+body{line-height:1.65}
+h1,h2,h3{letter-spacing:-.025em}
+h1{font-size:clamp(72px,7.5vw,108px);line-height:.98}
+h2{font-size:clamp(54px,5.14vw,74px)}
+.announcement{background:var(--plum);color:var(--paper);padding:11px 24px;text-align:center;font-size:12px;letter-spacing:1.6px;text-transform:uppercase}
+.site-header{gap:48px}
+.button{min-height:56px;padding:17px 28px}
+.button-light{background:var(--paper);color:var(--plum)}
+.button-light:hover{background:var(--sand)}
+.button-light:focus-visible{outline-color:var(--paper)}
+.text-link{min-height:48px;gap:16px}
+.hero{grid-template-columns:minmax(0,520px) minmax(0,584px);justify-content:space-between;gap:64px;padding-top:24px;padding-bottom:88px}
+.hero-copy{gap:32px;padding-bottom:32px}
+.hero-copy>.eyebrow{color:var(--gold);max-width:360px;padding-left:48px;position:relative}
+.hero-copy>.eyebrow::before{content:"";position:absolute;left:0;top:.8em;width:28px;height:1px;background:currentColor}
+.hero h1>span{display:block;padding-left:40px}
+.hero-intro{max-width:390px;font-size:17px;line-height:1.85}
+.hero-actions{gap:24px}
+.hero-photo>img{height:720px;object-position:center 12%}
+.hero-photo figcaption{font-size:12px;margin-top:16px;color:var(--muted)}
+.hero-photo figcaption>span{font-size:12px;letter-spacing:1px}
+.salon-details{padding-block:28px}
+#treatments>h2{max-width:800px}
+#treatments>.muted{max-width:580px;line-height:1.8}
+.treatment-grid{grid-template-columns:1fr;gap:80px;margin-top:24px}
+.treatment-card{display:grid;grid-template-columns:minmax(0,500px) minmax(0,1fr);gap:96px;align-items:center}
+.treatment-card:nth-child(2){grid-template-columns:minmax(0,1fr) minmax(0,500px)}
+.treatment-card:nth-child(2)>.treatment-image{grid-column:2;grid-row:1}
+.treatment-card:nth-child(2)>.treatment-copy{grid-column:1;grid-row:1;padding-left:64px}
+.treatment-copy{gap:24px;max-width:470px}
+.treatment-copy>.eyebrow{color:var(--gold)}
+.treatment-copy h3{font-size:56px}
+.treatment-copy>.muted{font-size:16px;line-height:1.9;max-width:380px}
+.treatment-image{height:460px}
+.treatment-image>img{transition:transform .35s}
+.treatment-image:hover>img{transform:scale(1.02)}
+.treatment-notes{margin-top:16px}
+.experience-grid{grid-template-columns:minmax(0,520px) minmax(0,584px);gap:96px}
+.experience h2{font-size:clamp(54px,5.2vw,74px)}
+.experience-copy>.eyebrow{color:#e0caa0}
+.experience-copy>p:not(.eyebrow){font-size:17px;line-height:1.9;max-width:430px;color:#e3d9dc}
+.salon-photo{height:680px}
+.experience-details{border-color:#796570;font-size:14px;margin-top:24px}
+.experience-details span{color:#e0caa0;margin-right:16px;font-size:12px}
+#instagram>.muted{max-width:580px}
+.instagram-grid{grid-template-columns:1.15fr 1fr 1fr;gap:32px;padding-block:16px 64px}
+.gallery-item{aspect-ratio:3/4;align-self:start}
+.gallery-item:nth-child(2){transform:translateY(64px)}
+.before-visit>.container{display:grid;grid-template-columns:1fr 1fr;column-gap:96px;align-items:start}
+.before-visit .eyebrow{grid-column:1;grid-row:1}
+.before-visit h2{grid-column:1;grid-row:2/5}
+.faq{border-color:#cbbfb5;padding-top:24px;grid-column:2}
+.faq:first-of-type{grid-row:1/3}
+.faq p{line-height:1.8}
+.visit{background:var(--plum);color:var(--paper);text-align:center}
+.visit>.container{align-items:center;gap:28px}
+.visit .eyebrow{color:#e0caa0}
+.visit h2{font-size:clamp(72px,7.5vw,108px)}
+.visit .booking-note{max-width:420px;font-size:14px;color:#e3d9dc}
+.site-footer{padding-top:64px}
+.footer-main{border:0;padding-top:0}
+.footer-bottom{border-top:1px solid var(--line);padding-top:24px}
+@media(max-width:1199px){
+ .site-header{gap:24px}.hero{gap:48px}.hero h1{font-size:clamp(72px,7.3vw,88px)}.hero-photo>img{height:650px}
+ .treatment-card,.experience-grid{gap:64px}.treatment-card:nth-child(2)>.treatment-copy{padding-left:32px}.treatment-image{height:420px}.treatment-copy h3{font-size:48px}.salon-photo{height:620px}.before-visit>.container{column-gap:64px}
+}
+@media(max-width:959px){
+ :root{--section-space:80px}
+ .announcement{letter-spacing:1px}.site-header{gap:24px}.hero{gap:32px}.hero h1{font-size:clamp(52px,7.8vw,74px)}.hero h1>span{padding-left:16px}.hero-copy>.eyebrow{padding-left:0}.hero-copy>.eyebrow::before{display:none}.hero-intro{font-size:15px}.hero-photo>img{height:590px}
+ .treatment-card,.treatment-card:nth-child(2){grid-template-columns:1fr 1fr;gap:40px}.treatment-card:nth-child(2)>.treatment-copy{padding-left:0}.treatment-image{height:380px}.treatment-copy h3{font-size:42px}.treatment-copy>.muted{font-size:15px}.treatment-grid{gap:64px}
+ .experience-grid{gap:40px}.experience h2{font-size:48px}.experience-copy>p:not(.eyebrow){font-size:16px}.salon-photo{height:560px}.experience-details span{display:block;margin-bottom:8px}
+ .instagram-grid{gap:20px}.before-visit>.container{column-gap:40px}.before-visit h2{font-size:52px}
+}
+@media(max-width:639px){
+ :root{--section-space:64px}
+ .announcement{padding:10px 20px;letter-spacing:.8px;font-size:12px}.announcement p{max-width:300px;margin:auto}
+ .hero{grid-template-columns:1fr;gap:32px;padding-top:24px;padding-bottom:56px}.hero-copy{gap:24px;padding-bottom:0}.hero h1{font-size:clamp(50px,16.4vw,64px)}.hero h1>span{padding-left:32px}.hero-copy>.eyebrow{font-size:12px;letter-spacing:1.4px}.hero-intro{font-size:16px;line-height:1.8}.hero-photo>img{height:auto;aspect-ratio:342/440;object-position:center 10%}.hero-photo figcaption{font-size:12px;gap:12px}.hero-photo figcaption>span{font-size:12px;max-width:150px;letter-spacing:.6px}
+ h2{font-size:50px}.flow{gap:28px}.treatment-grid{gap:56px;margin-top:8px}.treatment-card,.treatment-card:nth-child(2){display:flex;flex-direction:column;align-items:stretch;gap:28px}.treatment-image{height:380px}.treatment-copy{gap:20px}.treatment-copy h3{font-size:46px}.treatment-copy>.muted{font-size:16px}.treatment-notes{margin-top:8px}
+ .experience-grid{gap:40px}.salon-photo{height:auto}.experience h2{font-size:50px}.experience-details{margin-top:8px}.experience-details span{display:inline;margin-bottom:0}
+ .instagram-grid{grid-template-columns:1fr 1fr;gap:12px;padding-block:0}.gallery-item:nth-child(2){transform:none}.gallery-item:last-child{grid-column:1/-1;aspect-ratio:4/3}.gallery-item:last-child>img{object-position:center 40%}
+ .before-visit>.container{display:flex;gap:28px}.before-visit h2{font-size:50px}.faq{padding-top:24px}.visit h2{font-size:72px}.visit .button{width:100%}.site-footer{padding-top:48px}
+}
+@media(max-width:359px){.hero h1{font-size:50px}.hero h1>span{padding-left:12px}h2,.experience h2,.before-visit h2{font-size:44px}.visit h2{font-size:62px}.treatment-image{height:330px}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}}
