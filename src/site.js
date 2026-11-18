@@ -36,3 +36,24 @@ if (toggle && nav) {
   narrow.addEventListener('change', sync);
   sync();
 }
+
+const areaSearch = document.querySelector('#area-search');
+if (areaSearch) {
+  const panel = areaSearch.closest('.area-search');
+  const rows = [...document.querySelectorAll('[data-place]')];
+  const bands = [...document.querySelectorAll('.area-band')];
+  const count = document.querySelector('#area-count');
+  const filterAreas = () => {
+    const query = areaSearch.value.trim().toLocaleLowerCase('en-GB');
+    rows.forEach(row => { row.hidden = !row.dataset.place.includes(query); });
+    bands.forEach(band => {
+      band.hidden = ![...band.querySelectorAll('[data-place]')].some(row => !row.hidden);
+      band.open = Boolean(query) && !band.hidden;
+    });
+    const matches = rows.filter(row => !row.hidden).length;
+    count.textContent = matches ? `${matches} nearby ${matches === 1 ? 'place' : 'places'}${query ? ' found.' : ' in the directory. Expand a distance group or search by name.'}` : 'No matching place in this directory. Ask Macy if you need help planning your visit.';
+  };
+  panel.hidden = false;
+  areaSearch.addEventListener('input', filterAreas);
+  filterAreas();
+}

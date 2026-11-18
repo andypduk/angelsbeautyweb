@@ -8,7 +8,7 @@ The original Figma website was implemented as static HTML, CSS and a small navig
 
 The standard scope would have refined the original equal-card layout. Andy explicitly selected the Million Dollar direction: more deliberate editorial composition and service storytelling. This is an art-direction ambition, not a claim of revenue, celebrity clients or measured conversion improvement.
 
-The official gold logo, supplied salon interior and selected Dominique Rivas photograph remain. Full-face Instagram photography is excluded. The three gallery tiles show nail work and close-up lash/brow details, with links to their original posts. The old public `assets/images/lashes.webp` URL returns 404.
+The gold identity, supplied salon interior and selected Dominique Rivas photograph remain. The approved Figma logo refinement now replaces the original raster logo. Full-face Instagram photography is excluded. The three gallery tiles show nail work and close-up lash/brow details, with links to their original posts. The old public `assets/images/lashes.webp` URL returns 404.
 
 ## Deployment
 
@@ -17,6 +17,29 @@ Hostinger MCP `hosting_deploy`, type `static`, deployed the built `dist/` direct
 The destination initially contained only Hostinger's `default.php` Coming soon page. Its rendered HTML was saved locally at `output/hostinger-before.html`. No provider restore point or automatic rollback is claimed. `.hostinger/site.json` records the site target for future updates. No DNS, account, billing or email settings were changed.
 
 This handoff records manual Hostinger deployments. Consult the Git history for source-control publication; no automatic deployment is configured.
+
+### Approved logo, treatments and local discovery update
+
+Published through Hostinger MCP `hosting_deploy` on 18 November 2026 to the same temporary domain, type `static`, with status `deployed`. The 620,899-byte export contains 33 files including `.htaccess`. No separate deployment identifier was returned. It adds the approved SVG logo, nine treatment/consultation/visit/area pages, Klarna information, crawlable local content, linked entity/service/breadcrumb/FAQ data and an updated llms.txt. Details and sources: [SEO and content review](SEO-AND-CONTENT.md).
+
+Andy confirmed that indexing must wait for a permanent domain. All twelve HTML routes remain noindex. Hostinger serves its own temporary-domain robots.txt that additionally disallows Googlebot; this differs from the exported robots.txt and must be rechecked on the permanent domain. No cache purge, crawler-unblocking or DNS change was performed.
+
+Thirty-one public paths were downloaded over validated HTTPS and matched the built files byte-for-byte. The twelfth HTML page is the real 404 document; unknown URLs, the removed full-face image and the obsolete raster-logo URL all return HTTP 404. Every page's JSON-LD hash matches the public CSP header; SVG MIME type is correct. Evidence: `output/live-seo-verified/verification.json`. The previous live homepage matched the locally saved complete export at `output/before-logo-release/`, which can be redeployed manually if needed; no provider restore point is claimed.
+
+All eleven normal pages were checked in the live browser at 390 and 1440 px: new logos load, no page-wide horizontal overflow, and noindex is present. Local shared-template checks also passed at 320, 768 and 1024 px. The area directory's match, empty and reset states and mobile-menu Escape/focus behaviour were exercised. Consultation-page Lighthouse accessibility/best-practices scores are 100/100; SEO is 69 because indexing is intentionally disabled. Real-device, VoiceOver, separate Safari/Firefox and actual zoom checks remain pending.
+
+Final live performance: Node 26.13.1, Lighthouse 13.5.0, Headless Chrome 158; three cold navigations per route/profile, no warnings, no budget overrides. All six groups pass. Per-metric medians:
+
+| Route | Profile | LCP ms | CLS | TBT ms | Transfer bytes |
+| --- | --- | ---: | ---: | ---: | ---: |
+| Homepage | Mobile | 1,361 | 0 | 0 | 277,622 |
+| Homepage | Desktop | 330 | 0 | 0 | 435,059 |
+| Facial treatment | Mobile | 1,385 | 0 | 0 | 118,359 |
+| Facial treatment | Desktop | 347 | 0 | 0 | 118,132 |
+| Nearby-area directory | Mobile | 1,221 | 0 | 0 | 93,790 |
+| Nearby-area directory | Desktop | 296 | 0 | 0 | 93,801 |
+
+One homepage desktop run measured CLS 0.000251; the other seventeen runs measured zero. Performance scores were 100 except that desktop run at 99. Individual values, spreads and settings are in `output/audit-seo-live/`. These are lab navigations, not field Core Web Vitals or INP. The initial local homepage exceeded the LCP budget at 2,627 ms; a 26 KB responsive hero image and route-specific detail stylesheet reduced the final local median to 2,102 ms before publication. Final desktop/mobile live screenshots are saved as `output/website-updated-desktop.jpg` and `output/website-updated-mobile.jpg`.
 
 ## Functional and responsive evidence
 

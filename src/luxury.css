@@ -50,7 +50,7 @@ h2{font-size:clamp(54px,5.14vw,74px)}
 .gallery-item:nth-child(2){transform:translateY(64px)}
 .before-visit>.container{display:grid;grid-template-columns:1fr 1fr;column-gap:96px;align-items:start}
 .before-visit .eyebrow{grid-column:1;grid-row:1}
-.before-visit h2{grid-column:1;grid-row:2/5}
+.before-visit h2{grid-column:1;grid-row:2/6}
 .faq{border-color:#cbbfb5;padding-top:24px;grid-column:2}
 .faq:first-of-type{grid-row:1/3}
 .faq p{line-height:1.8}
@@ -83,4 +83,8 @@ h2{font-size:clamp(54px,5.14vw,74px)}
  .before-visit>.container{display:flex;gap:28px}.before-visit h2{font-size:50px}.faq{padding-top:24px}.visit h2{font-size:72px}.visit .button{width:100%}.site-footer{padding-top:48px}
 }
 @media(max-width:359px){.hero h1{font-size:50px}.hero h1>span{padding-left:12px}h2,.experience h2,.before-visit h2{font-size:44px}.visit h2{font-size:62px}.treatment-image{height:330px}}
+.related-links,.treatment-links,.footer-links{display:flex;flex-wrap:wrap;gap:12px 28px}.related-links>a,.treatment-links>a,.footer-links>a{display:inline-flex;align-items:center;min-height:44px;font-size:14px}.treatment-links{border-top:1px solid var(--line);padding-top:24px;width:100%}.local-intro>p{max-width:680px;font-size:18px;color:var(--muted)}.local-intro h2{max-width:760px}
+
+@media(max-width:1199px){.site-nav{gap:20px}.site-nav>a:not(.button){font-size:13px}}
+@media(max-width:959px){.site-nav>a:not(.button){font-size:16px}.footer-bottom{flex-wrap:wrap}}
 @media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}}

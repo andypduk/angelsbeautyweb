@@ -26,7 +26,8 @@ The static export includes a homepage, privacy page, real 404 page, local fonts,
 - Booking links use Angels' official `https://angels9.booksy.com/a/` link. Booksy owns prices, availability, booking terms and confirmation. No appointments are created by this site.
 - Edit `src/gallery.json` to change the Instagram selection. Images are local files in `src/assets/images/`; each gallery tile links to its original post. No Instagram embed, API credentials, background refresh, analytics or tracking is installed.
 - The facial image is illustrative stock by Dominique Rivas, credited on the page and in the design notes. The salon and Instagram images are supplied/original Angels material.
-- Font files are self-hosted with their OFL license texts. The logo remains the original raster artwork, cropped with CSS as in Figma.
+- Font files are self-hosted with their OFL license texts. The approved logo refinement is a transparent outlined SVG exported from editable Figma artwork.
+- Dedicated treatment, consultation, visit/payment and nearby-area pages provide crawlable HTML and linked structured data. [SEO and treatment coverage](docs/SEO-AND-CONTENT.md) records the Botox/B12 guidance, Klarna wording, ten-mile place data and permanent-domain indexing gate.
 
 ## Publishing
 
@@ -37,6 +38,8 @@ python3 scripts/build.py --site https://YOUR-CONFIRMED-DOMAIN --indexable
 ```
 
 This changes only local output; it does not publish or submit a sitemap. The default temporary preview sitemap intentionally has no indexable URLs. Retain noindex until the final domain and public content are approved.
+
+Run `python3 scripts/check_site.py` after building to verify routes, metadata, links, structured-data hashes and indexing policy. Temporary Hostinger domains cannot be built with `--indexable`.
 
 See [verification and deployment notes](docs/WEBSITE-HANDOFF.md) for actual checks, audit evidence and remaining limitations.
 
