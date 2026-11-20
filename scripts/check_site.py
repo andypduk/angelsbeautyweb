@@ -57,7 +57,12 @@ parser.add_argument('--indexable', action='store_true')
 args = parser.parse_args()
 root = args.dist
 parsed = {p.relative_to(root).as_posix(): Page(p.read_text()) for p in root.rglob('*.html')}
-assert len(parsed) >= 12, 'Missing expected treatment/local routes'
+expected_pages = {
+    'index.html', 'privacy.html', '404.html', 'areas/index.html', 'your-visit/index.html',
+    'treatments/index.html', 'treatments/nails/index.html', 'treatments/lashes-brows/index.html',
+    'treatments/facials/index.html', 'treatments/skin-consultation/index.html',
+}
+assert set(parsed) == expected_pages, ('Unexpected website routes', set(parsed) ^ expected_pages)
 headers = (root / '.htaccess').read_text()
 titles, canonicals = set(), set()
 for name, page in parsed.items():
@@ -71,7 +76,8 @@ for name, page in parsed.items():
         canonicals.add(page.canonical[0])
     robots = 'index, follow' if args.indexable and name != '404.html' else 'noindex, follow'
     assert page.meta['robots'] == robots, (name, 'Indexing gate failed')
-    assert not re.search(r'botox|botulinum|\bb12\b|anti[- ]wrinkle injections', ' '.join(page.text), re.I), (name, 'Prescription medicine promotion')
+    excluded = r'botox|botulinum|\bb12\b|inject(?:ion|able)|skin[- ]boosters?|dermal[- ]fillers?'
+    assert not re.search(excluded, (root / name).read_text(), re.I), (name, 'Excluded treatment')
     for link in page.links:
         u = urlsplit(link)
         if u.scheme or u.netloc:
@@ -106,6 +112,7 @@ for canonical in canonicals:
     if not canonical.endswith('/404.html'):
         assert canonical in llms, ('Missing llms.txt page', canonical)
 assert 'Klarna' in (root / 'your-visit/index.html').read_text()
+assert not re.search(excluded, llms, re.I), 'Excluded treatment in AI summary'
 svg = ET.fromstring((root / 'assets/images/angels-logo-gold.svg').read_text())
 assert svg.attrib['viewBox'] == '0 0 1000 330'
 assert not svg.findall('.//{http://www.w3.org/2000/svg}image')

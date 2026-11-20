@@ -4,7 +4,7 @@ Website project for Angels Clinic & Beauty.
 
 ## Website
 
-The responsive website began with the approved [Figma design](https://www.figma.com/design/WKseG6Qlc8DgpR1ERlWAZB?node-id=2-350). Andy's subsequent luxury editorial rework adds a facial-led hero, alternating treatment stories and a three-image gallery. It preserves the supplied gold logo and salon interior, Booksy booking links and the ivory/aubergine palette. Full-face Instagram photographs are excluded. [Design notes and asset provenance](docs/design/README.md) record the original image sources; [current asset mapping](docs/ASSETS.md) records the website placements.
+The local champagne rebrand uses the previously approved gold ANGELS wordmark, botanical artwork from Macy’s campaign and opening hours from her supplied hours card. The website features nails, brows, lashes and facials, Booksy bookings and a curated three-image Instagram gallery. The editable [desktop design](https://www.figma.com/design/WKseG6Qlc8DgpR1ERlWAZB/?node-id=51-64) and [mobile design](https://www.figma.com/design/WKseG6Qlc8DgpR1ERlWAZB/?node-id=51-65) share the original gold logo component. The treatment exclusions apply to the static website and its search metadata. Booksy manages its own catalogue.
 
 Temporary site: [cheerful-lightsalmon-kudu-31.hostingersite.com](https://cheerful-lightsalmon-kudu-31.hostingersite.com/). Public indexing remains disabled on this temporary domain.
 
@@ -27,7 +27,7 @@ The static export includes a homepage, privacy page, real 404 page, local fonts,
 - Edit `src/gallery.json` to change the Instagram selection. Images are local files in `src/assets/images/`; each gallery tile links to its original post. No Instagram embed, API credentials, background refresh, analytics or tracking is installed.
 - The facial image is illustrative stock by Dominique Rivas, credited on the page and in the design notes. The salon and Instagram images are supplied/original Angels material.
 - Font files are self-hosted with their OFL license texts. The approved logo refinement is a transparent outlined SVG exported from editable Figma artwork.
-- Dedicated treatment, consultation, visit/payment and nearby-area pages provide crawlable HTML and linked structured data. [SEO and treatment coverage](docs/SEO-AND-CONTENT.md) records the Botox/B12 guidance, Klarna wording, ten-mile place data and permanent-domain indexing gate.
+- Dedicated treatment, visit/payment and nearby-area pages provide crawlable HTML and linked structured data. [SEO and treatment coverage](docs/SEO-AND-CONTENT.md) records the Botox/B12 guidance, Klarna wording, ten-mile place data and permanent-domain indexing gate.
 
 ## Publishing
 

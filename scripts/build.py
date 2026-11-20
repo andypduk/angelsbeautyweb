@@ -61,7 +61,7 @@ business = {
     'image': site + '/assets/images/salon.webp',
     'address': {'@type': 'PostalAddress', 'addressLocality': 'West Clandon', 'addressRegion': 'Surrey', 'addressCountry': 'GB'},
     'areaServed': coverage, 'sameAs': [INSTAGRAM, BOOKSY], 'potentialAction': {'@type': 'ReserveAction', 'target': BOOKSY},
-    'hasOfferCatalog': {'@type': 'OfferCatalog', 'name': 'Beauty appointments and consultations', 'itemListElement': [
+    'hasOfferCatalog': {'@type': 'OfferCatalog', 'name': 'Beauty appointments', 'itemListElement': [
         {'@type': 'Offer', 'itemOffered': {'@type': 'Service', 'name': p['service_name'], 'url': site + p['path']}}
         for p in pages if p.get('service_name')
     ]}
@@ -105,8 +105,9 @@ def emit(text, path, schema=None):
 
 
 home = (SRC / 'index.html').read_text()
-home_meta = {'path': '/', 'title': 'Beauty salon in West Clandon, near Guildford | Angels', 'description': 'Nails, lash lifts, brows, facials and personal aesthetic consultations at Angels, a private beauty salon in West Clandon, near Guildford, Surrey.'}
-emit(home.replace('__GALLERY__', gallery_markup()), '/', schema_for(home_meta))
+home_meta = {'path': '/', 'title': 'Beauty salon in West Clandon, near Guildford | Angels', 'description': 'BIAB nails, lash lifts, brows and facials at Angels, a private beauty salon in West Clandon, near Guildford, Surrey.'}
+hours = (SRC / 'hours.html').read_text().strip()
+emit(home.replace('__GALLERY__', gallery_markup()).replace('__HOURS__', hours), '/', schema_for(home_meta))
 header = re.search(r'<header\b.*?</header>', home, re.S).group(0)
 header = re.sub(r'href="#([^"]+)"', r'href="/#\1"', header)
 footer = re.search(r'<footer\b.*?</footer>', home, re.S).group(0)
@@ -115,7 +116,7 @@ template = (SRC / 'page.html').read_text()
 
 def directory():
     services = [p for p in pages if p.get('service_name')]
-    return '<nav class="service-directory" aria-label="Treatment pages">' + ''.join(f'<a href="{p["path"]}"><span class="service-number" aria-hidden="true">0{i}</span><span><h2>{e(p["label"].split(" · ")[0])}</h2><p>{e(p["service_name"])}</p></span><span aria-hidden="true">↗</span></a>' for i, p in enumerate(services, 1)) + '</nav>'
+    return '<nav class="service-directory" aria-label="Treatment pages">' + ''.join(f'<a href="{p["path"]}"><span class="service-number" aria-hidden="true">0{i}</span><span><h2>{e(p["label"].split(" · ")[0])}</h2><p>{e(p.get("directory_summary", p["service_name"]))}</p></span><span aria-hidden="true">↗</span></a>' for i, p in enumerate(services, 1)) + '</nav>'
 
 
 def local_directory():
@@ -139,8 +140,8 @@ for page in pages:
         body += directory()
     if page.get('kind') == 'areas':
         body += local_directory()
-    if page['path'] == '/treatments/dermal-fillers/':
-        body += '<p class="independent-advice"><a href="https://www.nhs.uk/tests-and-treatments/cosmetic-procedures/advice/choosing-who-will-do-your-procedure/">Read NHS advice on choosing a cosmetic practitioner</a>.</p>'
+    if page['path'] == '/your-visit/':
+        body += '<section class="detail-section"><h2>Opening hours</h2>' + hours + '</section>'
     if page.get('image') == 'facial.webp':
         body += '<p class="photo-credit">Illustrative facial photograph by <a href="https://unsplash.com/photos/a-woman-getting-a-facial-massage-on-her-face-rWwuf8yKw4Y">Dominique Rivas / Unsplash</a>.</p>'
     if page['faqs']:
@@ -154,7 +155,9 @@ for page in pages:
         responsive = ' srcset="/assets/images/facial-800.webp 800w, /assets/images/facial.webp 1600w" sizes="(max-width: 639px) calc(100vw - 48px), 45vw"' if page['image'] == 'facial.webp' else ''
         width, height = (1600, 2399) if page['image'] == 'facial.webp' else (480, 640)
         image = f'<img class="detail-photo" src="/assets/images/{page["image"]}"{responsive} alt="{e(page["image_alt"])}" width="{width}" height="{height}" decoding="async">'
-    values = {'TITLE': e(page['title']), 'DESCRIPTION': e(page['description']), 'HEADER': header, 'FOOTER': footer, 'BREADCRUMBS': crumbs, 'HERO_CLASS': 'with-photo' if image else '', 'LABEL': e(page['label']), 'HEADING': e(page['heading']), 'INTRO': e(page['intro']), 'BOOKING_LABEL': 'Book a consultation' if page['path'] in ('/consultations/', '/treatments/dermal-fillers/', '/treatments/skin-boosters/') else 'View appointments on Booksy', 'IMAGE': image, 'BODY': body}
+    label, _, location = page['label'].partition(' · ')
+    hero_label = location if location and label == page['heading'] else page['label']
+    values = {'TITLE': e(page['title']), 'DESCRIPTION': e(page['description']), 'HEADER': header, 'FOOTER': footer, 'BREADCRUMBS': crumbs, 'HERO_CLASS': 'with-photo' if image else '', 'LABEL': e(hero_label), 'HEADING': e(page['heading']), 'INTRO': e(page['intro']), 'BOOKING_LABEL': 'View appointments on Booksy', 'IMAGE': image, 'BODY': body}
     rendered = template
     for key, value in values.items():
         rendered = rendered.replace('__' + key + '__', value)
@@ -173,7 +176,7 @@ links = '\n'.join(f'- [{p["label"].split(" · ")[0]}]({site}{p["path"]}): {p["de
 
 {'Temporary preview: public indexing is disabled until the permanent domain is confirmed.' if not args.indexable else 'Official website for Angels Clinic & Beauty.'}
 
-Booksy holds current service descriptions, prices, availability, policies and confirmation. Aesthetic options require individual assessment; no outcome or prescription is guaranteed. Klarna acceptance is advertised by the salon; arrangements and eligibility must be confirmed directly with Macy. No payment is processed here.
+Booksy holds current service descriptions, prices, availability, policies and confirmation. Klarna acceptance is advertised by the salon; arrangements and eligibility must be confirmed directly with Macy. No payment is processed here.
 
 ## Pages
 - [Homepage]({site}/): Salon introduction and treatment overview.

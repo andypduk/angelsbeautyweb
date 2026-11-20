@@ -1,90 +1,161 @@
-/* Editorial art direction; shared semantics and responsive menu live in styles.css. */
-:root{--section-space:112px;--gold:#806330}
-body{line-height:1.65}
-h1,h2,h3{letter-spacing:-.025em}
-h1{font-size:clamp(72px,7.5vw,108px);line-height:.98}
-h2{font-size:clamp(54px,5.14vw,74px)}
-.announcement{background:var(--plum);color:var(--paper);padding:11px 24px;text-align:center;font-size:12px;letter-spacing:1.6px;text-transform:uppercase}
-.site-header{gap:48px}
-.button{min-height:56px;padding:17px 28px}
-.button-light{background:var(--paper);color:var(--plum)}
-.button-light:hover{background:var(--sand)}
-.button-light:focus-visible{outline-color:var(--paper)}
-.text-link{min-height:48px;gap:16px}
-.hero{grid-template-columns:minmax(0,520px) minmax(0,584px);justify-content:space-between;gap:64px;padding-top:24px;padding-bottom:88px}
-.hero-copy{gap:32px;padding-bottom:32px}
-.hero-copy>.eyebrow{color:var(--gold);max-width:360px;padding-left:48px;position:relative}
-.hero-copy>.eyebrow::before{content:"";position:absolute;left:0;top:.8em;width:28px;height:1px;background:currentColor}
-.hero h1>span{display:block;padding-left:40px}
-.hero-intro{max-width:390px;font-size:17px;line-height:1.85}
-.hero-actions{gap:24px}
-.hero-photo>img{height:720px;object-position:center 12%}
-.hero-photo figcaption{font-size:12px;margin-top:16px;color:var(--muted)}
-.hero-photo figcaption>span{font-size:12px;letter-spacing:1px}
-.salon-details{padding-block:28px}
-#treatments>h2{max-width:800px}
-#treatments>.muted{max-width:580px;line-height:1.8}
-.treatment-grid{grid-template-columns:1fr;gap:80px;margin-top:24px}
-.treatment-card{display:grid;grid-template-columns:minmax(0,500px) minmax(0,1fr);gap:96px;align-items:center}
-.treatment-card:nth-child(2){grid-template-columns:minmax(0,1fr) minmax(0,500px)}
-.treatment-card:nth-child(2)>.treatment-image{grid-column:2;grid-row:1}
-.treatment-card:nth-child(2)>.treatment-copy{grid-column:1;grid-row:1;padding-left:64px}
-.treatment-copy{gap:24px;max-width:470px}
-.treatment-copy>.eyebrow{color:var(--gold)}
-.treatment-copy h3{font-size:56px}
-.treatment-copy>.muted{font-size:16px;line-height:1.9;max-width:380px}
-.treatment-image{height:460px}
-.treatment-image>img{transition:transform .35s}
-.treatment-image:hover>img{transform:scale(1.02)}
-.treatment-notes{margin-top:16px}
-.experience-grid{grid-template-columns:minmax(0,520px) minmax(0,584px);gap:96px}
-.experience h2{font-size:clamp(54px,5.2vw,74px)}
-.experience-copy>.eyebrow{color:#e0caa0}
-.experience-copy>p:not(.eyebrow){font-size:17px;line-height:1.9;max-width:430px;color:#e3d9dc}
-.salon-photo{height:680px}
-.experience-details{border-color:#796570;font-size:14px;margin-top:24px}
-.experience-details span{color:#e0caa0;margin-right:16px;font-size:12px}
-#instagram>.muted{max-width:580px}
-.instagram-grid{grid-template-columns:1.15fr 1fr 1fr;gap:32px;padding-block:16px 64px}
-.gallery-item{aspect-ratio:3/4;align-self:start}
-.gallery-item:nth-child(2){transform:translateY(64px)}
-.before-visit>.container{display:grid;grid-template-columns:1fr 1fr;column-gap:96px;align-items:start}
-.before-visit .eyebrow{grid-column:1;grid-row:1}
-.before-visit h2{grid-column:1;grid-row:2/6}
-.faq{border-color:#cbbfb5;padding-top:24px;grid-column:2}
-.faq:first-of-type{grid-row:1/3}
-.faq p{line-height:1.8}
-.visit{background:var(--plum);color:var(--paper);text-align:center}
-.visit>.container{align-items:center;gap:28px}
-.visit .eyebrow{color:#e0caa0}
-.visit h2{font-size:clamp(72px,7.5vw,108px)}
-.visit .booking-note{max-width:420px;font-size:14px;color:#e3d9dc}
-.site-footer{padding-top:64px}
-.footer-main{border:0;padding-top:0}
-.footer-bottom{border-top:1px solid var(--line);padding-top:24px}
-@media(max-width:1199px){
- .site-header{gap:24px}.hero{gap:48px}.hero h1{font-size:clamp(72px,7.3vw,88px)}.hero-photo>img{height:650px}
- .treatment-card,.experience-grid{gap:64px}.treatment-card:nth-child(2)>.treatment-copy{padding-left:32px}.treatment-image{height:420px}.treatment-copy h3{font-size:48px}.salon-photo{height:620px}.before-visit>.container{column-gap:64px}
+:root {
+  --gold: var(--bronze);
+  --section-space: clamp(64px, 7vw, 108px);
 }
-@media(max-width:959px){
- :root{--section-space:80px}
- .announcement{letter-spacing:1px}.site-header{gap:24px}.hero{gap:32px}.hero h1{font-size:clamp(52px,7.8vw,74px)}.hero h1>span{padding-left:16px}.hero-copy>.eyebrow{padding-left:0}.hero-copy>.eyebrow::before{display:none}.hero-intro{font-size:15px}.hero-photo>img{height:590px}
- .treatment-card,.treatment-card:nth-child(2){grid-template-columns:1fr 1fr;gap:40px}.treatment-card:nth-child(2)>.treatment-copy{padding-left:0}.treatment-image{height:380px}.treatment-copy h3{font-size:42px}.treatment-copy>.muted{font-size:15px}.treatment-grid{gap:64px}
- .experience-grid{gap:40px}.experience h2{font-size:48px}.experience-copy>p:not(.eyebrow){font-size:16px}.salon-photo{height:560px}.experience-details span{display:block;margin-bottom:8px}
- .instagram-grid{gap:20px}.before-visit>.container{column-gap:40px}.before-visit h2{font-size:52px}
+body { line-height: 1.65; }
+h1, h2, h3 { letter-spacing: -.035em; }
+h2 { font-size: clamp(44px, 5vw, 72px); }
+.announcement {
+  background: var(--sand);
+  color: var(--ink);
+  text-align: center;
+  font-size: 12px;
+  padding: 7px 20px;
 }
-@media(max-width:639px){
- :root{--section-space:64px}
- .announcement{padding:10px 20px;letter-spacing:.8px;font-size:12px}.announcement p{max-width:300px;margin:auto}
- .hero{grid-template-columns:1fr;gap:32px;padding-top:24px;padding-bottom:56px}.hero-copy{gap:24px;padding-bottom:0}.hero h1{font-size:clamp(50px,16.4vw,64px)}.hero h1>span{padding-left:32px}.hero-copy>.eyebrow{font-size:12px;letter-spacing:1.4px}.hero-intro{font-size:16px;line-height:1.8}.hero-photo>img{height:auto;aspect-ratio:342/440;object-position:center 10%}.hero-photo figcaption{font-size:12px;gap:12px}.hero-photo figcaption>span{font-size:12px;max-width:150px;letter-spacing:.6px}
- h2{font-size:50px}.flow{gap:28px}.treatment-grid{gap:56px;margin-top:8px}.treatment-card,.treatment-card:nth-child(2){display:flex;flex-direction:column;align-items:stretch;gap:28px}.treatment-image{height:380px}.treatment-copy{gap:20px}.treatment-copy h3{font-size:46px}.treatment-copy>.muted{font-size:16px}.treatment-notes{margin-top:8px}
- .experience-grid{gap:40px}.salon-photo{height:auto}.experience h2{font-size:50px}.experience-details{margin-top:8px}.experience-details span{display:inline;margin-bottom:0}
- .instagram-grid{grid-template-columns:1fr 1fr;gap:12px;padding-block:0}.gallery-item:nth-child(2){transform:none}.gallery-item:last-child{grid-column:1/-1;aspect-ratio:4/3}.gallery-item:last-child>img{object-position:center 40%}
- .before-visit>.container{display:flex;gap:28px}.before-visit h2{font-size:50px}.faq{padding-top:24px}.visit h2{font-size:72px}.visit .button{width:100%}.site-footer{padding-top:48px}
-}
-@media(max-width:359px){.hero h1{font-size:50px}.hero h1>span{padding-left:12px}h2,.experience h2,.before-visit h2{font-size:44px}.visit h2{font-size:62px}.treatment-image{height:330px}}
-.related-links,.treatment-links,.footer-links{display:flex;flex-wrap:wrap;gap:12px 28px}.related-links>a,.treatment-links>a,.footer-links>a{display:inline-flex;align-items:center;min-height:44px;font-size:14px}.treatment-links{border-top:1px solid var(--line);padding-top:24px;width:100%}.local-intro>p{max-width:680px;font-size:18px;color:var(--muted)}.local-intro h2{max-width:760px}
+.site-header { padding-block: 14px; }
+.site-nav { flex: 0 1 auto; gap: clamp(18px, 2.6vw, 44px); }
+.site-nav .nav-booking { padding: 12px 24px; min-height: 46px; }
+.button { padding-inline: 26px; }
 
-@media(max-width:1199px){.site-nav{gap:20px}.site-nav>a:not(.button){font-size:13px}}
-@media(max-width:959px){.site-nav>a:not(.button){font-size:16px}.footer-bottom{flex-wrap:wrap}}
-@media(prefers-reduced-motion:reduce){*,*::before,*::after{transition:none!important}}
+.campaign-hero {
+  position: relative;
+  isolation: isolate;
+  width: min(calc(100% - 48px), 1512px);
+  margin: 0 auto;
+  background: #f5eade;
+  background: linear-gradient(115deg, #f2e5d3, #f8efe5 60%, #ecdbca);
+  display: grid;
+  grid-template-columns: minmax(0, .65fr) minmax(0, 1.5fr) minmax(0, .95fr);
+  gap: 24px;
+  align-items: center;
+  min-height: clamp(460px, 38vw, 580px);
+  padding: 42px max(4%, 36px) 40px 0;
+  overflow: hidden;
+}
+.campaign-hero::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: min(27%, 295px);
+  z-index: -1;
+  background: url('/assets/images/botanical-vase.webp') left bottom / cover no-repeat;
+  mask-image: linear-gradient(to right, black 50%, transparent 98%);
+}
+.campaign-hero::after {
+  content: "";
+  position: absolute;
+  inset: 12px;
+  border: 1px solid #bc9e75;
+  border-radius: 3px;
+  pointer-events: none;
+}
+.campaign-copy { grid-column: 2; }
+.campaign-intro { max-width: 50ch; color: var(--ink); text-align: left; }
+.campaign-intro p + p { margin-top: .75em; }
+.campaign-copy h1 { font-size: clamp(64px, 6.3vw, 96px); line-height: .94; }
+.campaign-copy h1 span, .script-accent {
+  display: block;
+  color: var(--bronze);
+  font: 400 .86em/1.12 "Pinyon Script", cursive;
+  letter-spacing: -.025em;
+}
+.campaign-copy h1 span { margin-top: .04em; }
+.gold-rule { display: flex; align-items: center; gap: 4px; width: 96px; margin: 22px 0; color: #a07b4c; }
+.gold-rule::before, .gold-rule::after { content: ""; height: 1px; background: currentColor; flex: 1; }
+.gold-rule i { width: 10px; height: 12px; background: currentColor; clip-path: polygon(50% 0, 65% 37%, 100% 50%, 65% 63%, 50% 100%, 35% 63%, 0 50%, 35% 37%); }
+.campaign-copy .campaign-label {
+  margin-bottom: 20px;
+  color: var(--bronze);
+  font-size: 12px;
+  letter-spacing: .04em;
+}
+.campaign-actions { display: flex; align-items: center; gap: 22px; flex-wrap: wrap; margin-top: 24px; }
+.campaign-portrait { width: min(100%, 340px); justify-self: center; text-align: center; }
+.campaign-portrait img {
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  object-position: 50% 24%;
+  border-radius: 50% 50% 4px 4px / 40% 40% 4px 4px;
+  outline: 1px solid #aa8964;
+  outline-offset: 6px;
+}
+.campaign-portrait figcaption { margin-top: 10px; color: var(--muted); font-size: 12px; }
+.campaign-portrait figcaption a { display: inline-block; padding-block: 4px; }
+.campaign-portrait figcaption a:hover { text-decoration: underline; }
+#treatments > .muted, #instagram > .muted { max-width: 580px; }
+.treatment-grid { display: grid; width: 100%; grid-template-columns: repeat(3,minmax(0,1fr)); gap: clamp(20px,3vw,48px); }
+.treatment-card { display: flex; flex-direction: column; gap: 22px; }
+.treatment-image { height: auto; aspect-ratio: 1.22; border-radius: 2px; }
+.treatment-copy { gap: 12px; }
+.treatment-copy h3 { font-size: clamp(32px,3.2vw,48px); }
+.treatment-copy .muted { line-height: 1.7; }
+.skin-consultation {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding: clamp(22px, 3vw, 40px);
+  background: var(--sand);
+}
+.skin-consultation p { max-width: 54ch; margin-top: 10px; color: var(--muted); }
+.skin-consultation .text-link { flex-shrink: 0; }
+.treatment-links, .related-links, .footer-links { display: flex; gap: 8px 26px; flex-wrap: wrap; }
+.treatment-links a, .related-links a, .footer-links a { display: inline-flex; align-items: center; min-height: 44px; font-size: 14px; }
+.experience, .visit { background: var(--sand); color: var(--ink); }
+.experience-copy { gap: 24px; }
+.experience-copy p { color: var(--muted); max-width: 440px; }
+.experience-grid { grid-template-columns: 1fr 1fr; }
+.salon-photo { height: auto; aspect-ratio: 1.24; object-position: center 59%; }
+.experience-details { flex-direction: column; gap: 0; padding: 0; border-color: var(--line); }
+.experience-details li { display: flex; align-items: baseline; gap: 10px; padding-block: 12px; border-bottom: 1px solid var(--line); }
+.experience-details span { margin: 0; color: var(--bronze); white-space: nowrap; }
+.instagram-grid { grid-template-columns: repeat(3,minmax(0,1fr)); padding: 0; gap: clamp(12px,2vw,32px); }
+.gallery-item { aspect-ratio: 4 / 5; }
+.before-visit > .container { display: grid; grid-template-columns: 1fr 1.15fr; gap: 28px 8%; align-items: start; }
+.before-visit h2 { grid-row: 1 / span 4; }
+.before-visit .faq { grid-column: 2; }
+.faq { border-color: var(--line); }
+.visit.section { text-align: left; }
+.visit > .hours-layout { display: grid; grid-template-columns: 1fr 1.15fr; align-items: center; gap: 8%; }
+.visit h2 { font-size: clamp(56px,6vw,84px); }
+.hours-layout .flow { gap: 22px; align-items: flex-start; }
+.opening-hours { display: grid; gap: 6px; width: 100%; margin: 0; }
+.opening-hours div { display: grid; grid-template-columns: 1fr 1fr; text-align: center; border-radius: 50px; overflow: hidden; font-size: 15px; }
+.opening-hours dt, .opening-hours dd { padding: 8px 12px; margin: 0; }
+.opening-hours dt { background: var(--paper); }
+.opening-hours dd { background: var(--blush); border-left: 1px solid var(--line); font-variant-numeric: tabular-nums; }
+.local-intro > p { max-width: 670px; }
+.site-footer { border-top: 1px solid var(--line); }
+.footer-main { border-top: 0; }
+.footer-main .brand { width: 215px; }
+.footer-bottom { border-top: 1px solid var(--line); padding-top: 20px; flex-wrap: wrap; }
+@media(max-width: 959px) {
+  .site-nav { flex-basis: 100%; gap: 8px; }
+  .campaign-hero { width: calc(100% - 24px); grid-template-columns: .36fr 1.5fr .95fr; gap: 20px; padding-right: 36px; min-height: 400px; }
+  .campaign-hero::before { opacity: .8; width: 21%; }
+  .campaign-copy h1 { font-size: clamp(54px,7.7vw,72px); }
+  .campaign-actions { gap: 8px 18px; }
+}
+@media(max-width: 639px) {
+  .skin-consultation { flex-direction: column; align-items: flex-start; gap: 12px; }
+  .campaign-hero { display: block; min-height: 0; padding: 44px 26px 32px; }
+  .campaign-hero::before { width: 32%; opacity: .55; background-size: auto 62%; mask-image: linear-gradient(to right, black, transparent 98%); }
+  .campaign-copy { position: relative; text-align: center; }
+  .campaign-intro { margin-inline: auto; }
+  .campaign-copy h1 { font-size: clamp(56px,14.5vw,80px); }
+  .campaign-copy .campaign-label { margin-bottom: 16px; font-size: 11px; }
+  .gold-rule { margin: 16px auto; }
+  .campaign-actions { justify-content: center; margin-top: 18px; }
+  .campaign-portrait { margin: 26px auto 0; width: min(77%,265px); }
+  .campaign-portrait img { aspect-ratio: 1.5; border-radius: 100px 100px 2px 2px; object-position: 50% 25%; }
+  .treatment-grid, .visit > .hours-layout { grid-template-columns: 1fr; gap: 36px; }
+  .treatment-card { gap: 15px; }
+  .treatment-image { height: auto; }
+  .before-visit > .container { display: flex; }
+  .experience-grid { flex-direction: column; }
+  .instagram-grid { grid-template-columns: repeat(3,minmax(0,1fr)); }
+  .gallery-item:last-child { grid-column: auto; aspect-ratio: 4/5; }
+  .footer-main { align-items: flex-start; }
+}
